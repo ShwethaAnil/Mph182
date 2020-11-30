@@ -1,0 +1,217 @@
+employee -- 
+eid(pk),ename,salary, doj, bonus, jcode(fk),deptno(fk),mgrno(fk to eid)
+department --deptno(pk), dname, lcode(fk)
+job- jcode(pk),jname
+location- lcode(pk),lname
+
+1. Salary should not be lessthan 25000
+2.  Name should accept as upper case letters
+3. Jcode should start from J
+
+------------------------------------------
+1. Display ename,lname,jname, dname values 
+2. Display the employee id , name salary who are belongs to job of 'Tester'
+3. Display the eid,ename,salary who are belongs to location GTP
+4. Display the ename and their respective managername
+
+select empid,ename,salary from employee where deptno =
+(select deptno from department where lcode=(select lcode from location where lname='GTP'));
+
+
+Oracle:
+predefined user:
+	sys
+	system
+	sysdba
+	hr
+	
+	create user username identified by pass;
+	create user java182 identified by java182;
+	persmissions:
+	If you want to allow login --->  connect
+	if you want table creations, table altrations  --> resource
+	if you want db adminstrator --->dba
+	
+	SELECT
+	INSERT
+	
+	grant connect, resource, dba to java182;
+	
+	
+	
+	SQL -- structured query language
+	NoSQL --not a sql
+	
+	SQL -- > DDL - create, alter ,drop
+				   DML - insert, update ,delete
+				   DCL - grant, revoke
+				   DRL/DQL - select 
+				   TCL - commit, rollback, savepoint  --ACID
+	
+PL/SQL -- Procedural Language /Structured Query Language	
+	//set of statments --> Block of code
+	
+	Block --> Annonymous Block
+					Named Block
+					
+	Annonymous Block
+			Declaration -- DECLARE
+			Execution part --BEGIN   END
+			Exception part --exception
+			
+			
+	variable ---> v_test   varchar2(15);
+		Datatypes:  varchar, varchar2,int,number, decimal, nvarchar, date, timestamp
+							blob, clob, nblob,nclob,
+							raw
+		
+	DECLARE
+		v_test varchar2(15); //declaration
+	BEGIN
+		v_test := 'Java182 Training';
+		DBMS_OUTPUT.PUT_LINE(v_test);
+	END;	
+		
+
+IF condition THEN
+	statments;
+END IF;	
+
+DECLARE
+	n_sales number;
+	n_costs number;
+	b_profitable boolean;
+BEGIN 
+	b_profitable := false;
+	IF n_sales > n_costs THEN
+		b_profitable :=true;
+	END IF;
+END;
+/
+
+IF condition THEN
+    statments;
+ELSE
+		statments;
+END IF;
+		
+IF condition THEN
+	statments;
+ELSIF condition2 THEN
+		statment;
+ELSIF condition3 THEN
+			
+.
+.
+.
+ELSE 
+				else statements;
+END IF;
+
+
+IF condition THEN
+		IF condition THEN
+				statements;
+		END IF;
+ELSE
+       statements;
+END IF;	   
+	  
+CASE Statments:
+
+1. Simple CASE
+		
+		CASE selector
+		WHEN selector_value_1 THEN
+			statements;
+		WHEN selector_value_2 THEN
+			statement;
+		....
+		ELSE
+			statement;
+		END CASE;	
+
+2. Searched CASE
+
+	   CASE 
+		WHEN condition1 THEN
+			statements;
+		WHEN condition2 THEN
+			statement;
+		....
+		ELSE
+			statement;
+		END CASE;
+--Simple Case		
+DECLARE
+		v_grade char(1);
+		c_rank varchar2(20);
+BEGIN
+		v_grade = &v_grade; 
+		CASE v_grade
+		WHEN 'A' THEN
+			v_rank := 'excellent';
+		WHEN 'B' THEN
+			v_rank := 'very good';
+		WHEN 'C' THEN
+			v_rank := 'good';
+		WHEN 'D' THEN
+			v_rank := 'Average';
+		WHEN 'E' THEN
+			v_rank := 'Poor';
+		WHEN 'F' THEN
+			v_rank := 'very poor';	
+		ELSE
+			v_rank := 'No such Grade';
+		END CASE;
+	DBMS_OUTPUT.PUT_LINE(v_rank);	
+END;
+/	  
+
+--searched case
+DECLARE
+	n_sales number;
+	n_com number;
+BEGIN
+	n_sales := 150000;
+	CASE
+	WHEN n_sales > 200000 THEN	
+		n_com := 0.2; 
+	WHEN n_sales >= 100000 AND  n_sales < 200000 THEN
+	   n_com := 0.15;
+	 WHEN n_sales >= 50000 AND n_sales <  100000 THEN
+		n_com := 0.1;
+	WHEN n_sales > 30000 THEN
+		n_com :=0.5;
+	ELSE
+		n_com :=0;
+	END CASE;
+  DBMS_OUTPUT.PUT_LINE('Commission is '|| n_com * 100 || '%');	
+END;  
+
+	  
+			--go to example
+BEGIN
+  GOTO amulya;
+  <<nandhini>>
+ DBMS_OUTPUT.PUT_LINE(' HI ');
+ GOTO chandana;
+ <<amulya>>
+ DBMS_OUTPUT.PUT_LINE('PL/ SQL GOTO');
+ GOTO nandhini;
+ <<chandana>>
+ DBMS_OUTPUT.PUT_LINE(' Bye Bye');
+END;
+
+
+
+
+
+
+
+	
+
+
+
+
+
