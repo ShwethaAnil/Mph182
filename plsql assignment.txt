@@ -1,0 +1,41 @@
+1.Write a PL/SQL program to display the details 
+of the employee number 7369.
+2. Write a PL/SQL program to accept the Employee 
+Name and display the details of that Employee 
+including the Department Name.
+3. Write a PL/SQL block to increase the salary of 
+employees either by 30 % or 5000 whichever is minimum 
+for a given Department_Code.
+Find out 30% of salary, if it is more than 5000,
+ increase by 5000. If it is less than 5000, 
+ increase by 30% of salary
+4. Write a PL/SQL program to check for the 
+bonus for an employee no 7369. 
+If no bonus exists, then display the error message. Use Exceptions
+5. pl/sql block to print the pattern
+*
+**
+***
+****
+*****
+
+
+
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+	
+	Procedures or Function
+6. Sum of digits equal to a given number in PL/SQL:ARMstrong number: 151
+153= 1pow3+5pow3+3pow3=153
+7. Check the number is palindrome or not
+8. Sum of first n prime number
+9. Find the number of vowels and consonenets in a string
+10. GCD of two numbers	
+	
