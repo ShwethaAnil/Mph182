@@ -1,0 +1,8 @@
+eid(pk),ename,salary, doj, bonus, jcode(fk),deptno(fk),mgrno(fk to eid)
+department --deptno(pk), dname, lcode(fk)
+job- jcode(pk),jname
+location- lcode(pk),lname
+
+1. Salary should not be lessthan 25000
+2.  Name should accept as upper case letters
+3. Jcode should start from J
