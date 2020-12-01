@@ -1,0 +1,211 @@
+Recap:
+-------
+PLSQL--
+
+Anonymous Blocks 
+Named Blocks
+
+Block --> Declaration Section --DECLARE
+				Execution Section -- BEGIN   END
+				Exception Section - Exception
+				
+				
+				Datatypes -->  Oracle SQl Datatypes will support
+				Variables  --> v_test datatype
+				Declaring a variable
+				v_name    varchar2(10)  
+				v_salary    decimal(10,4)
+				v_commision   decimal(10,2)
+				
+				Initializing a variable -->  v_name := 'Shwetha';
+				printing --> DBMS_OUTPUT.PUT_LINE(v_name || "The name is");
+				
+			IF condition THEN
+				statement
+			END IF
+			
+			IF condition THEN
+				statement
+			ELSE
+				Statement
+			END IF
+			
+			IF condition THEN
+				statement
+			ELSIF condition THEN
+				Statement
+			ELSE
+   			    Statement
+			END IF
+
+			CASE -- Simple CASE  --> expression
+							Searched CASE --> multiple conditions
+							
+							CASE expression
+							WHEN 1stexpressionvalue THEN
+							statement
+							WHEN 2ndexpressionvalue THEN
+							statement
+							WHEN 3rdexpressionvalue THEN
+							statement
+							ELSE
+							statement
+							END CASE;
+							
+---------------------
+	Datatype
+	Constants
+	%type--->Anchored Datatype
+	%rowtype --> employee%rowtype
+	DECLARE
+		--v_salary number(8);
+		v_salary employee.salary%TYPE;
+	BEGIN
+		select salary into v_salary from employee 
+		where empid= 1;
+		DBMS_OUTPUT.PUT_LINE("The salary of empiid is " ||v_salary);
+	END;	
+	
+	
+	Employee table --the salary column datatype is matching but length is more
+select eid,ename,salary,bonus,doj into 
+v_eid,v_ename,v_salary,v_bonus, v_doj
+from employee where eid=1;
+
+select eid,ename from employee;
+select * from employee;
+v_salary employee.salary%TYPE; -- single column
+v_employee employee%ROWTYPE; --- row
+
+select * into v_employee from employee where eid=1;
+
+Constants in PLSQL
+SET SERVEROUTPUT ON;
+DECLARE
+	v_pi CONSTANT NUMBER(7,5) := 3.141592;
+	v_radius number;
+	v_area number(10,2);
+BEGIN
+   v_area := 0;
+   v_radius := &v_radius;
+   v_area = v_pi * v_radius *v_radius;
+   DBMS_OUTPUT.PUT_LINE("The area of circle is " ||v_area);
+ END;  
+	
+-- I have to print 1 to 10
+create a variable with initalizing of 1
+then will take loop with the condition 10
+print value
+
+Iterations
+	1. Simple Loop
+	2. While Loop
+	3. Numeric For Loop
+	4. Cursor For Loop
+	
+	Loop -- initalizing , condition checking , incrementation
+	--simple loop
+	Loop
+		statement 1;
+		statement 2;
+		statement 3;
+		...
+	END Loop;
+	
+While Loop
+		
+		WHILE condition Loop
+				statement 1;
+				statement 2;
+				statement 3;
+				...
+		END Loop;
+		
+Numeric For Loop
+	FOR loop_counter IN [REVERSE] lower_limit .. upper_limit Loop
+	
+		statement 1;
+				statement 2;
+				statement 3;
+				...
+		END Loop;
+
+Cursor  -- Assigned to hold the information about the processing of a select statement or DML statment.
+
+Context Area --> Memory region inside the PGA
+--- Rows returned by a query
+--- Number of rows processed by a query
+--- A pointer of the parse query in the shared pool
+
+Using cursor you can control the context area as it is a pointer to the same
+
+Types of Cursors:
+	1. Implicit Cursors
+	2. Explicit Cursors
+	
+Implicit--> Automatically created by the oracle server
+Explicit  ---> Use defined cursor	
+							Creating Cursor:
+								1. Declare
+									CURSOR cursor_name IS select statement
+								2. Open --memory will be allocated
+										OPEN cursor_name
+								3. Fetch
+								       FETCH cursor_name INTO plsql variables;
+									   or
+									    FETCH cursor_name INTO plsql record;
+								4. Close
+									CLOSE cursor_name;
+									
+BEGIN
+	UPDATE employee set deptno=123 where empid=11;
+END;
+
+%NOTFOUND --- cur_name%NOTFOUND
+%FOUND -- cur_name%FOUND
+%ISOPEN -- cur_name%ISOPEN
+%ROWCOUNT -- cur_name%ROWCOUNT
+
+1. If the employee salary is greater than 35000
+	then you have to increase the salary by 15%
+	by using plsql block with cursor
+
+
+update employee set salary = 1.5* v_salary 
+where empid=v_empid;
+
+
+User Defined Record datatype
+	TYPE type_name IS RECORD(
+		field_name datatype,
+		field_name datatype,
+		field_name datatype
+	);
+	
+	record_name type_name;
+
+
+Named Blocks
+	--Procedure  --Stored Procedures --doesnot return
+	--Function -- Stored Functions--return the data
+	
+	CREATE  OR REPLACE FUNCTION fun_name
+	(parameter1,parameter 2,...)
+	RETURN datatype
+	IS
+	   declare varaible, constant , cursor, recordtype;
+	BEGIN
+			Executable statments
+			Return return_value
+	END;
+	
+	--Procedure
+	CREATE  OR REPLACE PROCEDURE procedure_name
+	(parameter1,parameter 2,...)
+	IS
+	   declare varaible, constant , cursor, recordtype;
+	BEGIN
+			Executable statments
+	END procedure_name;
+	
+	Parameters in Procedures--> IN, OUT, INOUT
