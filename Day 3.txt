@@ -1,0 +1,231 @@
+Recap:
+---------
+Blocks --
+COnstants -- v_pi CONSTANT NUMBER(7,6) := 3.14
+Variables -- v_dname tablename.columnname%TYPE;
+				--  v_emp tablename%ROWTYPE
+				-- TYPE nameof the type IS RECORD
+						(empid  number,
+						ename employee.ename%TYPE,
+						dname varchar(15))
+Bind Variables --VARIABLE v_bind_var varchar2(10);
+							EXEC :v_bind_var :='Mphasis';
+							BEGIN
+								:v_bind_var := 'Mphasis Limited';
+							END;
+
+								DBMS
+								PRINT :v_bind_var;
+								
+								SET AUTOPRINT ON;
+								VARIABLE v_bind_var varchar2(10);
+								EXEC :v_bind_var :='Mphasis';
+datatype
+ Loops
+	1. Simple Loop
+	2. While Loop
+	3.Numeric For Loop
+	4. Cursor For Loop
+	
+	Loop
+		statements;
+		statements;
+		IF v_counter >=10 THEN
+			EXIT;
+		END;	
+	END Loop;	
+	
+	WHILE conditions LOOP
+		statements;
+		
+	END LOOP;	
+	
+	FOR v_couter IN  REVERSE 1 .. 20 Loop
+		statements;
+		statements;
+	END LOOP;	
+	
+Cursor: 
+			COntext Area
+			Implicit --> %NOTFOUND, %FOUND, %ISOPEN, 
+			Excplicit --user defined cursors
+				1. Declare --declartion section
+				2.Open
+				3. Fetch
+				4.Close
+			DECLARE
+			CURSOR c_dep IS select * from department;
+			BEGIN
+			OPEN c_dep;
+			FETCH c_dep INTO p_record;
+			CLOSE c_dep;
+			END;
+
+Named Blocks --
+				Functions
+				
+				--calculate area of traingle
+				--i/p -base and height
+				--o/p -- a
+				rea
+		create or replace function area_traingle(base number,height number)
+		RETURN NUMBER  IS
+				--declartion section
+				area number(10,2);
+				--Execution Section
+		BEGIN
+			--Area of a traingle 
+			area := 0.5 * base * height;
+			return area;
+		END;
+		/
+		
+		--execut Functions
+		BEGIN
+			DBMS_OUTPUT.PUT_LINE(area_traingle(12,34));
+		END;
+		/
+	
+Procedure: Parameter types-- IN, OUT, INOUT
+create or replace PROCEDURE p_traingle	(base IN number, height IN number, area OUT number)
+AS|IS
+BEGIN
+  area := 0.5 * base * height;
+  DBMS_OUTPUT.PUT_LINE('Area of a traingle is '||area);
+END;
+/				
+Exceptions:
+	1.System Defined Exceptions
+	2. User Defined Exceptions -- explicitly raise the exception
+	
+	1. Declare Userdefined exception
+			a. EXCEPTION datatype 
+			   raise it explicitly RAISE statements
+			 b.PRAGMA EXCEPTION_INIT-- you can map with error number
+			c. RAISE_APPLICATION_ERROR --error number and message
+	
+	a. 
+	DECLARE
+		v_dividend number : =25;
+		v_divisor number :=0;
+		v_result number;
+		ex_DivZero EXCEPTION;
+	BEGIN
+		IF v_divisor = 0 THEN
+			RAISE ex_DivZero;
+		END IF;
+	    v_result := v_dividend/v_divisor;
+		DBMS_OUTPUT.PUT_LINE('RESULT is '|| v_result);
+	EXCEPTION
+		WHEN ex_DivZero THEN
+			DBMS_OUTPUT.PUT_LINE('Number cannot divide by zero');
+	END;		
+		
+Package ---> Are stored libraries in the db which allow us to group related PL?SQL objects under one name;		
+	Package Elements --
+		Stored Procedure,
+		Functions
+		Cursors
+		Type declartions
+		variables
+		
+	Package Specification  --> public package elements
+		CREATE or REPLACE PACKAGE pkg_name IS
+			Declaration statments;
+		END [pkg_name];	
+			
+	Package body --> private package elements
+		create or replace PACKAGE BODy pkg_name IS
+			varaible declartion;
+			Type Declartions;
+		BEGIN
+			Implementation ofpackage;
+		END [pkg_name];	
+	
+Triggers:
+-----------
+ Specialized stored programs which executes implicitly when a triggering event occurs;	
+
+EVENTs
+	--> A DML EVENTs
+	--> A DDL Event
+	--> USER EVENT
+	--> System EVENT
+	
+Types --
+			DML Triggers--dml operations
+			DDL Triggers -- ddl opertaions
+			SYSTEM/DATABASE Event Triggers
+				--Schema -- logon, logoff
+				--database --startup, shutdown
+			Instead of Triggers --view--updatable views
+			Compond Triggers --levels
+			
+			
+		CREATE or REPLACE TRIGGER trigger_name
+		{BEFORE|AFTER} Triggering_Event ON table_name
+		FOR EACH ROW  another trigger_name
+		ENABLE/DISABLE WHEN condtion
+		DECLARE
+			delcartion statements;
+		BEGIN
+			exceutable statments;
+		END;	
+		
+		
+		DML Triggers
+		
+		Location
+		
+		CREATE or REPLACE TRIGGER ti_loc
+			BEFORE INSERT ON Location
+			FOR EACH ROW
+			ENABLE
+			DECLARE
+				c_user varchar2(20);
+			BEGIN
+				Select user INTO v_user from dual;
+				DBMS_OUTPUT.PUT_LINE('THE use is '||user);
+			END;
+			/
+	
+Instead-of triggers --
+			you can control the default behavior of insert,update,delete operations on views but not on tables.
+			
+			Views--virtual tables
+			
+			create or replace trigger trigger_name
+			instead of operations
+			on view_name
+			FOR EACH ROW
+			BEGIN
+				 statement; 
+			END;
+/				
+	
+Compound Trigger -- Level	
+			Timings Points
+				--> BEFORE STATEMENT
+				--> BEFORE ROW
+				--> AFTER ROW
+				-->AFTER STATEMENT
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		
+		
+			
+			
+			
+	
+	
+
