@@ -1,0 +1,50 @@
+1Java Program to Swap Two Numbers
+2Java Program to Check Whether an Alphabet is Vowel or Consonant
+3Java Program to Find the Largest Among Three Numbers
+4Java Program to Find all Roots of a Quadratic Equation
+5Java Program to Check Whether a Character is Alphabet or Not
+6Java Program to Calculate the Sum of Natural Numbers
+7Java Program to Find Factorial of a Number
+8Java Program to Generate Multiplication Table
+9Java Program to Display Fibonacci Series
+10Java Program to Find GCD of two Numbers
+11Java Program to Find LCM of two Numbers
+12Java Program to Display Characters from A to Z using loop
+13Java Program to Count Number of Digits in an Integer
+14 Java Program to Reverse a Number
+15 Java Program to Check Whether a Number is Palindrome or Not
+16Java Program to Check Whether a Number is Prime or Not
+17Java Program to Display Prime Numbers Between Two Intervals
+18Java Program to Check Armstrong Number
+19Java Program to Display Prime Numbers Between Intervals Using Function
+20Java Program to Display Armstrong Numbers Between Intervals Using Function
+21Java Program to Display Factors of a Number
+22Java Program to Make a Simple Calculator Using switch...case
+23Java Program to Check Whether a Number can be Expressed as Sum of Two Prime Numbers
+24Java Program to Find the Sum of Natural Numbers using Recursion
+25Java Program to Convert Binary Number to Decimal and vice-versa
+26Java Program to Convert Octal Number to Decimal and vice-versa
+27Java Program to Convert Binary Number to Octal and vice-versa
+28Java Program to Calculate Average Using Arrays
+29Java Program to Find Largest Element of an Array
+30Java Program to Calculate Standard Deviation
+31Java Program to Add Two Matrix Using Multi-dimensional Arrays
+32Java Program to Multiply to Matrix Using Multi-dimensional Arrays
+33Java Program to Multiply two Matrices by Passing Matrix to a Function
+34Java Program to Find Transpose of a Matrix
+35Programs to print triangles using *, numbers and characters
+         *
+      * * *
+    * * * * *
+  * * * * * * *
+* * * * * * * * *
+
+
+2.
+
+           1
+         1   1
+       1   2   1
+     1   3   3    1
+   1   4   6   4   1
+ 1   5   10   10  5   1
