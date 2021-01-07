@@ -1,0 +1,13 @@
+CaseStudy:
+	1. Mobile Recharge Application:
+		1. Account Balance En-query
+        2. Recharge Account
+			a. Based on Account type: 
+			1. Prepaid - recharge --ask for amount
+			2. Postpaid - recharge through creditcard --ask for cardnumber then amount
+        3. exit
+		
+		Exceptions:
+		1. IncorrectNumberException for validate 10 numbers
+		2. InputMismatchException for any other data
+		3. InvalidNumber  for if number not present in Array
